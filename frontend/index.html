@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My eCommerce Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to My Store</h1>
+    <div id="products"></div>
+    <script>
+        fetch('http://<BACKEND-EC2-IP>:8080/products')
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById('products');
+            data.forEach(p => {
+                container.innerHTML += `<div><h3>${p.name}</h3><p>₹${p.price}</p></div>`;
+            });
+        });
+    </script>
+</body>
+</html>
